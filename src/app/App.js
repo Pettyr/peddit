@@ -3,31 +3,29 @@ import {
   Route,
   BrowserRouter,
   Routes
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import Comment from '../components/Comment';
+import AppLayout from "./AppLayout";
+import CommentList from "../components/CommentList";
+import Post from "../components/Post";
+import CreatePost from "../components/CreatePostForm";
+import PostList from "../components/PostList";
 
-
-
-
-export default function App() {
+function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route exact path="/" element={<AppLayout />}>
+          <Route path="/comments" element={<CommentList />} />
+          <Route path="/posts-list" element={<PostList />} />
+          <Route path="/posts-list/:postID" element={<Post />} />
+          <Route path="/create-post" element={<CreatePost />} />
+        </Route>
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
+export default App;
