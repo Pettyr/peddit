@@ -1,13 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ROUTES from '../app/routes';
+import CreatePostForm from './CreatePostForm';
+import Sidebar from './Sidebar';
 
 import dummyPosts from '../assets/dummyPosts';
 
 export default function PostList() {
 
     return (
+        <section className="main-content">
         <section className="center">
+            <div>
+                <CreatePostForm />
+            </div>
+            <hr />
+            <br />
+            <br />
             <h1> POSTS </h1>
             {/* <ul className="post-list">
                 {Object.values(posts).map((post) => (
@@ -26,7 +35,7 @@ export default function PostList() {
                 </ul> */}
             <div>
             {dummyPosts.map(post => (
-            <article key={post.id}>
+            <article className="card" key={post.id}>
                 <Link to={ROUTES.postRoute(post.id)}>
                 <div>
                     <h4>{post.author}</h4>
@@ -41,6 +50,10 @@ export default function PostList() {
             </article>
             ))}
             </div>       
+        </section>
+        <section className="sidebar">
+            <Sidebar />
+        </section>
         </section>
     )
 }

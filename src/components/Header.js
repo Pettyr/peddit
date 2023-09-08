@@ -2,21 +2,24 @@ import React from "react";
 import ROUTES from "../app/routes";
 import { NavLink } from "react-router-dom";
 
-export default function Header () {
-
+function Header() {
     return (
-        <ul>
-        <li>
-            <NavLink to={ROUTES.postListRoute()} >
+      <header className="header">
+        <div className="logo">
+          <NavLink to={ROUTES.postListRoute()} >
             Peddit
             </NavLink>
-        </li>
-        <li>
-            SearchBar
-        </li>
-        <li>
-            User
-        </li>
-        </ul>
-    )
-}
+        </div>
+        <div className="search-bar">
+          <input type="text" placeholder="Search Peddit" />
+          <button>Search</button>
+        </div>
+        <div className="user-menu">
+          <button className="login-button">Login</button>
+          <button className="signup-button">Sign Up</button>
+        </div>
+      </header>
+    );
+  }
+  
+  export default Header;

@@ -1,0 +1,60 @@
+/* Post.css (or your preferred CSS file) */
+
+/* Post container */
+.post {
+    max-width: 600px;
+    margin: 10rem auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Post title */
+  .post h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Post meta info (Author, Date) */
+  .post p {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Post content */
+  .post-content {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  
+  /* Comments container */
+  .comments {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Individual comment */
+  .comment {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Comment author */
+  .comment .comment-author {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Comment content */
+  .comment .comment-content {
+    margin-bottom: 0;
+  }
+  

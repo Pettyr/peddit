@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import dummyPosts from '../assets/dummyPosts';
+import './Post.css';
 
 function Post() {
   // Get the postId parameter from the URL
@@ -14,18 +15,19 @@ function Post() {
   }
 
   return (
-    <div>
+    <div className="post">
       <h2>{post.title}</h2>
       <p>Author: {post.author}</p>
       <p>Date: {post.date}</p>
-      <p>{post.content}</p>
-      <p>{post.comments.map(comment => (
-            <div key={comment.id}>
-                <p>Comment by: {comment.author}</p>
-                <p>{comment.content}</p>
-            </div>
+      <p className="post-content">{post.content}</p>
+      <div className="comments">
+        {post.comments.map((comment) => (
+          <div className="comment" key={comment.id}>
+            <p className="comment-author">Comment by: {comment.author}</p>
+            <p className="comment-content">{comment.content}</p>
+          </div>
         ))}
-      </p>
+      </div>
     </div>
   );
 }
