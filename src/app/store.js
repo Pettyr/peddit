@@ -1,18 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import postsReducer from '../features/posts/postSLice';
+import postsListReducer from '../features/postsList/postsListSLice';
 import commentsReducer from '../features/comments/commentSlice';
-import usersReducer from '../features/users/userSlice';
-import authReducer from '../features/auth/authSlice';
 
 const store = configureStore({
     reducer: {
-    posts: postsReducer,
-    comments: commentsReducer,
-    users: usersReducer,
-    auth: authReducer,
+        postsList: postsListReducer,
+        comments: commentsReducer,
     },
 });
 
 
 export default store;
+
+
+/*import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'; // You may need middleware for async actions
+import rootReducer from './reducers'; // Combine your reducers
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+export default store;
+*/
