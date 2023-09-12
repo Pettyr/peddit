@@ -1,36 +1,38 @@
+// In a separate file, e.g., Comments.js
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  fetchCommentsByPostId,
+  fetchComments,
   selectComments,
-  isLoadingComments
-} from '../comments/commentsSlice';
-import { selectCurrentArticle } from '../currentArticle/currentArticleSlice';
-import CommentList from '../../components/CommentList';
+  isFetchingComments,
+} from './commentsSlice';
 
-const Comments = () => {
+const Comments = ({ postId }) => {
   const dispatch = useDispatch();
-  const post = useSelector(selectCurrentArticle);
-  // Declare additional selected data here.
   const comments = useSelector(selectComments);
-  const commentsAreLoading = useSelector(isLoadingComments);
-  // Dispatch loadCommentsForArticleId with useEffect here.
-  useEffect(() => {
-      if (article !== undefined) {
-      dispatch(fetchCommentsByPostId(post.id))};
-  }, [dispatch, article])
-  const commentsForArticleId = article ? comments[article.id] : [];
+  const isFetchingCommentsList = useSelector(isFetchingComments);
 
-  if (commentsAreLoading) 
-  return <div>Loading Comments</div>;
-  if (!article) return <div>no article</div>;
+  useEffect(() => {
+    dispatch(fetchComments(postId));
+  }, [dispatch, postId]);
+
+  if (isFetchingCommentsList) {
+    return <div className='comment-container'>Fetching comments</div>;
+  }
 
   return (
-    <div className='comments-container'>
-      <h3 className='comments-title'>Comments</h3>
-      <CommentList comments={commentsForArticleId} />
-    </div>
+    <section>
+      <div className="post-container">
+        <h2>Comments</h2>
+        {comments.map((comment) => (
+          // Render individual comments here
+          <div key={comment.data.id}>
+            {/* Render comment content */}
+          </div>
+        ))}
+      </div>
+    </section>
   );
-};
+}
 
 export default Comments;

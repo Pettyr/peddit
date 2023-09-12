@@ -6,10 +6,9 @@ import {
 } from 'react-router-dom';
 
 import AppLayout from "./AppLayout";
-import Post from "../components/FullPost";
-import CreatePost from "../components/CreatePostForm";
 import PostList from "../features/postsList/PostsList";
-import UserProfile from "../components/UserProfile";
+import Comments from "../features/comments/Comments";
+
 
 function App() {
   return (
@@ -18,9 +17,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<AppLayout />}>
           <Route path="/posts-list" element={<PostList />} />
-          <Route path="/posts-list/:postId" element={<Post />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/posts-list/r/:subReddit/comments/:postId" element={<Comments />} />
         </Route>
       </Routes>
     </div>

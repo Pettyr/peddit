@@ -1,7 +1,6 @@
 const ROUTES = {
-    postRoute: (id) => `/posts-list/${id}`,
+    commentsRoute: (subreddit, id) => `/posts-list/r/${subreddit}/comments/${id}`,
     postListRoute: () => "/posts-list",
-    userProfileRoute: () => "/user-profile",
   };
   
   export default ROUTES;

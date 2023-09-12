@@ -1,6 +1,14 @@
 import React from 'react';
-
+import ROUTES from '../app/routes';
+import { Link } from 'react-router-dom';
 export default function PostsListItem({ post }) {
+const { title,
+        author,
+        num_comments,
+        preview, 
+        subreddit,
+        id } = post.data
+
   const getUrl = (imgUrl) => {
     let encoded = imgUrl.replace('amp;s', 's')
     let doubleEncoded = encoded.replace('amp;', '')
@@ -9,15 +17,17 @@ export default function PostsListItem({ post }) {
   };
 
   return (
-    <button key={post.data.id} className='card'>
-        <h3 className='post-title'>{post.data.title}</h3>
+    <section className="card">
+        <h3 className='post-title'>{title}</h3>
+        <Link to={ROUTES.commentsRoute(subreddit, id)} >
         <div className='post-preview'>
-          {post.data.preview ? <img src={getUrl(post.data.preview.images[0].source.url)} alt="preview" /> : null}
+          {preview ? <img src={getUrl(preview.images[0].source.url)} alt="preview" /> : null}
         </div>
         <div className='post-content'>
-        <p className='post-author'>Posted by: {post.data.author}</p>
-        <p className='post-comments'>Comments: {post.data.num_comments}</p>
-      </div>
-    </button>
+        <p className='post-author'>Posted by: {author}</p>
+        <p className='post-comments'>Comments: {num_comments}</p>
+        </div>
+        </Link>
+    </section>
   );
 }
