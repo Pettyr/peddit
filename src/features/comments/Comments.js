@@ -6,32 +6,36 @@ import {
   selectComments,
   isFetchingComments,
 } from './commentsSlice';
+import { useParams } from 'react-router-dom';
+import Comment from '../../components/Comment'
+import './comments.css'
 
-const Comments = ({ postId }) => {
+const Comments = () => {
   const dispatch = useDispatch();
+  const { subreddit, postId, title } = useParams()
   const comments = useSelector(selectComments);
   const isFetchingCommentsList = useSelector(isFetchingComments);
 
   useEffect(() => {
-    dispatch(fetchComments(postId));
-  }, [dispatch, postId]);
+    dispatch(fetchComments({ subreddit, postId}));
+  }, [dispatch, subreddit, postId]);
 
   if (isFetchingCommentsList) {
     return <div className='comment-container'>Fetching comments</div>;
   }
 
   return (
-    <section>
-      <div className="post-container">
-        <h2>Comments</h2>
+    <>
+      <h1 className="post-title">{title}</h1>
+      <hr/>
+      <h2>Comments:</h2>
+      <div className="comments-container">
         {comments.map((comment) => (
           // Render individual comments here
-          <div key={comment.data.id}>
-            {/* Render comment content */}
-          </div>
+          <Comment comment={comment} key={comment.data.id} />
         ))}
       </div>
-    </section>
+     </>
   );
 }
 

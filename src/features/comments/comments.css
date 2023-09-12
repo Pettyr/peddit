@@ -1,0 +1,68 @@
+/* Define a class for comment cards */
+.comments-container {
+  max-width: 800px;
+  margin: 1rem auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-title {
+  align-self: center;
+  margin: 5rem auto;
+  max-width: 60rem;
+}
+
+.comment-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 3rem;
+    width: 40rem;
+  }
+  .comment-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  /* Style comment content */
+  .comment {
+    /* You can customize the font, size, and color */
+    font-size: 14px;
+    color: #333;
+    margin: 2rem;
+  }
+  /* Style comment upvotes */
+  .comment-upvotes {
+    font-weight: bold;
+    color: #007bff; /* Blue color for upvotes */
+    margin: 1rem 0 0 2rem;
+  }
+  
+  /* Style the "Replies" button */
+  .comment-replies {
+    background-color: #007bff; /* Blue color for the button */
+    color: #fff; /* White text color */
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+    display: flex;
+    align-self: center;
+  }
+  .comment-replies:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    background-color: #0056b3;
+  }
+  
+h2 {
+  margin-left: auto;
+}

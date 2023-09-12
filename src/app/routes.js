@@ -1,5 +1,5 @@
 const ROUTES = {
-    commentsRoute: (subreddit, id) => `/posts-list/r/${subreddit}/comments/${id}`,
+    commentsRoute: (subreddit, id, title) => `/r/${subreddit}/comments/${id}/${title}`,
     postListRoute: () => "/posts-list",
   };
   

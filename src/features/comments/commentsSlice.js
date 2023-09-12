@@ -4,17 +4,16 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // Create an async thunk for fetching comments
 export const fetchComments = createAsyncThunk(
   'comments/fetchComments', 
-  async (subreddit, id) => {
-    console.log('id:', id)
+  async ({ subreddit, postId }) => {
     try {
-      const response = await fetch(`https://www.reddit.com/r/${subreddit}/comments/${id}.json`);
+      const response = await fetch(`https://www.reddit.com/r/${subreddit}/comments/${postId}.json`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-
-      console.log('data:', data);
-      return data;
+      const comments = data[1].data.children
+      console.log('comments:', comments)
+      return comments;
     } catch (error) {
       throw error;
     }

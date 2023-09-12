@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<AppLayout />}>
           <Route path="/posts-list" element={<PostList />} />
-          <Route path="/posts-list/r/:subReddit/comments/:postId" element={<Comments />} />
+          <Route path="/r/:subreddit/comments/:postId/:title" element={<Comments />} />
         </Route>
       </Routes>
     </div>

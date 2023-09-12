@@ -1,6 +1,8 @@
 import React from 'react';
 import ROUTES from '../app/routes';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+
+
 export default function PostsListItem({ post }) {
 const { title,
         author,
@@ -19,7 +21,7 @@ const { title,
   return (
     <section className="card">
         <h3 className='post-title'>{title}</h3>
-        <Link to={ROUTES.commentsRoute(subreddit, id)} >
+        <Link to={ROUTES.commentsRoute(subreddit, id, title)} >
         <div className='post-preview'>
           {preview ? <img src={getUrl(preview.images[0].source.url)} alt="preview" /> : null}
         </div>
