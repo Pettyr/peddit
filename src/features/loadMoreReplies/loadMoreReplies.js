@@ -17,10 +17,9 @@ const loadMoreReplies = async (nestedReply, link_id) => {
       // Perform the API request to load more replies
       const response = await fetch(apiUrl);
       const responseData = await response.json();
-      const moreReplies = responseData.json.data.things;
+      const newReplies = responseData.json.data.things;
       // Process the responseData and update your state as needed
-      console.log('moreReplies:', moreReplies);
-      return moreReplies;
+      console.log('newReplies:', newReplies);
     } catch (error) {
       console.error('Error loading more replies:', error);
     }
