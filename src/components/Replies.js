@@ -12,6 +12,7 @@ const Replies = ({ reply }) => {
   } = data;
   const [showReplies, setShowReplies] = useState(false);
   const [moreReplies, setMoreReplies] = useState([]);
+  const [buttonClicked, setButtonClicked] = useState(false);
   
   const renderReplyCount = replies ? replies.data.children.length : 0;
 
@@ -47,6 +48,8 @@ const Replies = ({ reply }) => {
       // Process the responseData and update your state as needed
       console.log('newReplies:', newReplies);
       setMoreReplies([...moreReplies, ...newReplies]);
+      setButtonClicked(true);
+
     } catch (error) {
       console.error('Error loading more replies:', error);
     }
@@ -54,13 +57,18 @@ const Replies = ({ reply }) => {
   };
 
   const renderReplies = () => {
-    if (!showReplies || !replies || !replies.data.children.length) {
-      return null;
-    }
-  
-    const renderedReplies = replies.data.children.map((nestedReply) => {
-      if (nestedReply.kind === 'more') {
-        return (
+  if (!showReplies || !replies || !replies.data.children.length) {
+    return null;
+  }
+
+  // Create an array to store rendered replies and additional replies
+  const renderedReplies = [];
+
+  replies.data.children.forEach((nestedReply) => {
+    if (nestedReply.kind === 'more') {
+      // Render "Load More Replies" button if it's not clicked
+      if (!buttonClicked) {
+        renderedReplies.push(
           <button
             key={nestedReply.data.id}
             className='more-replies-button'
@@ -69,23 +77,31 @@ const Replies = ({ reply }) => {
             Load More Replies
           </button>
         );
-      } else {
-        return (
-          <Replies key={nestedReply.data.id} reply={nestedReply} />
-        );
       }
+    } else {
+      // Render individual reply
+      renderedReplies.push(
+        <Replies key={nestedReply.data.id} reply={nestedReply} />
+      );
+    }
+  });
+
+  // Render additional replies if available
+  if (moreReplies && moreReplies.length > 0) {
+    moreReplies.forEach((additionalReply) => {
+      renderedReplies.push(
+        <Replies key={additionalReply.data.id} reply={additionalReply} />
+      );
     });
-  
-    return (
-      <div className="replies">
-        {renderedReplies}
-        {/* Render additional replies */}
-        {moreReplies.map((additionalReply) => (
-          <Replies key={additionalReply.data.id} reply={additionalReply} />
-        ))}
-      </div>
-    );
-  };
+  }
+
+  return (
+    <div className="replies">
+      {renderedReplies}
+    </div>
+  );
+};
+
   
 
   return (
