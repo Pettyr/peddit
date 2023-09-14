@@ -9,27 +9,32 @@ const Comment = ({ comment }) => {
             body,
             ups,
             replies,
-            parentId,
+            link_id
         } = data
 
   const [showReplies, setShowReplies] = useState(false);
-  const [commentIds, setCommentIds] = useState('');
+  const [moreReplies, setMoreReplies] = useState([]);
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   const renderReplyCount = replies ? replies.data.children.length : 0;
 
   useEffect(() => {
-    // Extract "more" comment IDs when the component mounts
-    if (comment.kind === 'more' && replies === undefined) {
-      const extractedCommentIds = extractMoreCommentIds(comment);
-      setCommentIds(extractedCommentIds);
+    if (kind === 'more' && replies && replies.data.children.length === 0) {
+      const commentIds = extractMoreCommentIds(comment);
+      if (commentIds) {
+        loadMoreReplies(link_id, commentIds);
+      }
     }
-  }, [kind, data, comment, replies]);
+  }, [kind, data, replies, link_id]);
+
 
   const toggleReplies = () => {
     setShowReplies(!showReplies);
   };
 
-  const loadMoreReplies = async () => {
+  const loadMoreReplies = async (reply, link_id) => {
+    const kind = reply.kind;
+    const commentIds = extractMoreCommentIds(reply)
     try {
       if (kind !== 'more' || !commentIds) {
         // Don't load more replies if it's not a "more" comment or if there are no comment IDs.
@@ -37,45 +42,69 @@ const Comment = ({ comment }) => {
       }
   
       // Construct the API request URL
-      const apiUrl = `https://www.reddit.com/api/morechildren.json?link_id=${parentId}&children=${commentIds}&sort=top&api_type=json`;
+      const apiUrl = `https://www.reddit.com/api/morechildren.json?link_id=${link_id}&children=${commentIds}&sort=top&api_type=json`;
   
       // Perform the API request to load more replies
       const response = await fetch(apiUrl);
       const responseData = await response.json();
+      const newReplies = responseData.json.data.things;
   
       // Process the responseData and update your state as needed
       console.log('responseData:', responseData);
+      setMoreReplies([...moreReplies, ...newReplies]);
+      setButtonClicked(true);
+
     } catch (error) {
       console.error('Error loading more replies:', error);
     }
   };
 
-  const renderReplies =() => {
+  const renderReplies = () => {
     if (!showReplies || !replies || !replies.data.children.length) {
-        return null;
+      return null;
     }
+  
+    // Create an array to store rendered replies and additional replies
+    const renderedReplies = [];
+  
+    replies.data.children.forEach((reply) => {
+      if (reply.kind === 'more') {
+        // Render "Load More Replies" button if it's not clicked
+        if (!buttonClicked) {
+          renderedReplies.push(
+            <button
+              key={reply.data.id}
+              className='more-replies-button'
+              onClick={() => loadMoreReplies(reply, link_id)}
+            >
+              Load More Replies
+            </button>
+          );
+        }
+      } else {
+        // Render individual reply
+        renderedReplies.push(
+          <Replies key={reply.data.id} reply={reply} />
+        );
+      }
+    });
+  
+    // Render additional replies if available
+    if (moreReplies && moreReplies.length > 0) {
+      moreReplies.forEach((additionalReply) => {
+        renderedReplies.push(
+          <Replies key={additionalReply.data.id} reply={additionalReply} />
+        );
+      });
+    }
+  
     return (
-        <div className="replies">
-          {replies.data.children.map((reply) => {
-            if (reply.kind === 'more') {
-              return (
-                <button
-                  key={reply.data.id}
-                  className='more-replies-button'
-                  onClick={loadMoreReplies}
-                >
-                  Load More Replies
-                </button>
-              );
-            } else {
-              return (
-                <Replies key={reply.data.id} reply={reply} />
-              );
-            }
-          })}
-        </div>
-      );
-    };     
+      <div className="replies">
+        {renderedReplies}
+      </div>
+    );
+  };
+      
 
   return (
     <section className='comment'>
