@@ -25,7 +25,7 @@ const Comment = ({ comment }) => {
         loadMoreReplies(link_id, commentIds);
       }
     }
-  }, [kind, data, replies, link_id]);
+  }, [kind, replies, link_id]);
 
 
   const toggleReplies = () => {

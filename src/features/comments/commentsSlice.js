@@ -11,9 +11,8 @@ export const fetchComments = createAsyncThunk(
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      const comments = data[1].data.children
-      console.log('comments:', comments)
-      return comments;
+      console.log('data:', data)
+      return data;
     } catch (error) {
       throw error;
     }
@@ -46,8 +45,16 @@ const commentsSlice = createSlice({
   },
 });
 
-export const selectComments = (state) => state.comments.comments;
+// Create a selector to select the comments data
+export const selectCommentsData = (state) => state.comments.comments[1]?.data.children || [];
+
+// Create a selector to select the preview property
+export const selectPreview = (state) => {
+  const data = state.comments.comments[0]?.data?.children[0].data;
+  return data ? data.preview : 0;
+};
 
 export const isFetchingComments = (state) => state.comments.isFetchingComments;
+
 
 export default commentsSlice.reducer;
