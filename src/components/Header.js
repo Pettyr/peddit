@@ -14,11 +14,6 @@ function Header() {
         <div className="search-bar">
           <SearchBar />
         </div>
-        <div className="user-menu">
-          <button className="login-button">Login</button>
-          <button className="signup-button">Sign Up</button>
-          <button className="signup-button">Profile</button>
-        </div>
       </header>
     );
   }

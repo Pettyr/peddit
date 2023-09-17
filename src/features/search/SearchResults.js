@@ -5,16 +5,21 @@ import {
     selectSearchResults,
     isFetchingSearchResults
 } from './searchResultsSlice'
+import { useSearchParams, createSearchParams } from 'react-router-dom';
 import PostsListItem from '../../components/PostsListItem';
 
 const SearchResults = () => {
     const dispatch = useDispatch();
+    const [searchParams] = useSearchParams()
+    const query = searchParams.get('q');
+    const queryString = createSearchParams({q: query}).toString()
+    console.log('queryString', queryString)
     const posts = useSelector(selectSearchResults);
     const isFetching = useSelector(isFetchingSearchResults);
     console.log('posts:', posts)
     
     useEffect(() => {
-      dispatch(fetchSearchResults());
+      dispatch(fetchSearchResults(queryString));
     }, [dispatch]);
   
     if (isFetching) {

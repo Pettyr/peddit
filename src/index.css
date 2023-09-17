@@ -17,7 +17,7 @@ li {
 .header {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 10rem;
   position: fixed;
   top: 0;
@@ -30,9 +30,6 @@ li {
   margin-left: 5%;
 }
 
-.user-menu {
-  margin-right: 5%;
-}
 
 body {
   font-family: Arial, sans-serif;
