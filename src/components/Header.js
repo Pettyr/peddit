@@ -1,6 +1,7 @@
 import React from "react";
 import ROUTES from "../app/routes";
 import { NavLink } from "react-router-dom";
+import SearchBar from "./SearchBar"
 
 function Header() {
     return (
@@ -11,8 +12,7 @@ function Header() {
             </NavLink>
         </div>
         <div className="search-bar">
-          <input type="text" placeholder="Search Peddit" />
-          <button>Search</button>
+          <SearchBar />
         </div>
         <div className="user-menu">
           <button className="login-button">Login</button>

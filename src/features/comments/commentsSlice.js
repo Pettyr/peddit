@@ -46,12 +46,17 @@ const commentsSlice = createSlice({
 });
 
 // Create a selector to select the comments data
-export const selectCommentsData = (state) => state.comments.comments[1]?.data.children || [];
+export const selectCommentsData = (state) => state.comments.comments[1]?.data.children ;
 
 // Create a selector to select the preview property
-export const selectPreview = (state) => {
+export const selectTitle = (state) => {
   const data = state.comments.comments[0]?.data?.children[0].data;
-  return data ? data.preview : 0;
+  return data ? data.title : null;
+};
+
+export const selectSelfText = (state) => {
+  const data = state.comments.comments[0]?.data?.children[0].data;
+  return data ? data.selftext : null 
 };
 
 export const isFetchingComments = (state) => state.comments.isFetchingComments;

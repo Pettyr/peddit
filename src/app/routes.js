@@ -1,6 +1,7 @@
 const ROUTES = {
-    commentsRoute: (subreddit, id, title) => `/r/${subreddit}/comments/${id}/${title}`,
+    commentsRoute: (subreddit, id) => `/r/${subreddit}/comments/${id}`,
     postListRoute: () => "/posts-list",
+    searchResultsRoute: (queryString) => `/search?${queryString}`,
   };
   
   export default ROUTES;

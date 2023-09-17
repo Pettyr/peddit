@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import extractMoreCommentIds from '../features/loadMoreReplies/extractMoreCommentIds';
+import ReactMarkdown from 'react-markdown';
+
 
 const Replies = ({ reply }) => {
   const { data, kind } = reply;
@@ -107,7 +109,7 @@ const Replies = ({ reply }) => {
   return (
     <section className='reply'>
       <div className="comment-card">
-        <p className="comment">{body}</p>
+        <ReactMarkdown className="comment">{body}</ReactMarkdown>
         <p className="comment-upvotes">{ups} upvotes</p>
       </div>
       {renderReplyCount > 0 && (

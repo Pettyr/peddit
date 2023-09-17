@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchComments,
   selectCommentsData,
+  selectTitle,
+  selectSelfText,
   isFetchingComments,
 } from './commentsSlice';
 import { useParams } from 'react-router-dom';
@@ -13,15 +15,18 @@ import ImagePreview from '../../components/ImagePreview';
 
 const Comments = () => {
   const dispatch = useDispatch();
-  const { subreddit, postId, title } = useParams()
+  const { subreddit, postId } = useParams()
   const comments = useSelector(selectCommentsData);
   console.log('comments:', comments);
-  const preview = JSON.parse(localStorage.getItem('preview'));
+  const storedPreview = localStorage.getItem('preview');
+  const parsedPreview = storedPreview ? JSON.parse(storedPreview) : null;
+  const title = useSelector(selectTitle)
+  const selfText = useSelector(selectSelfText);
   const isFetchingCommentsList = useSelector(isFetchingComments);
   const [showMoreComments, setShowMoreComments] = useState(false);
-  const [numCommentsToShow, setNumCommentsToShow] = useState(5);
+  const [numCommentsToShow] = useState(5);
    // Adjust the number of comments to show 
-  console.log('preview:', preview);
+  console.log('preview:', parsedPreview);
   useEffect(() => {
     dispatch(fetchComments({ subreddit, postId}));
   }, [dispatch, subreddit, postId]);
@@ -34,21 +39,22 @@ const Comments = () => {
     return <div className='comment-container'>Fetching comments</div>;
   }
 
-  const visibleComments = showMoreComments ? comments : comments.slice(0, numCommentsToShow);
+  const visibleComments = showMoreComments ? comments : comments?.slice(0, numCommentsToShow);
 
 
   return (
     <>
     <div className="comments-header">
       <h2 className="post-title">{title}</h2>
-      <div className="post-preview">
-      <ImagePreview preview={preview} />
+      <div className="post-preview-comments">
+      <p>{selfText? selfText : null}</p>
+      <ImagePreview preview={parsedPreview} />
       </div>
       <hr /> 
     </div>
       <h2 className="comments-page-heading">Comments</h2>
       <div className="comments-container">
-        {visibleComments.map((comment) => (
+        {visibleComments?.map((comment) => (
           comment.kind === 'more' ? (
             <button className="load-more-comments" onClick={toggleMoreComments} key={comment.data.id}>
               {showMoreComments ? 'Hide More Comments' : 'Load More Comments'}

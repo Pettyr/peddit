@@ -8,7 +8,7 @@ import {
 import AppLayout from "./AppLayout";
 import PostList from "../features/postsList/PostsList";
 import Comments from "../features/comments/Comments";
-
+import SearchResults from "../features/search/SearchResults";
 
 function App() {
   return (
@@ -17,7 +17,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<AppLayout />}>
           <Route path="/posts-list" element={<PostList />} />
-          <Route path="/r/:subreddit/comments/:postId/:title" element={<Comments />} />
+          <Route path="/r/:subreddit/comments/:postId" element={<Comments />} />
+          <Route path="/search" element={<SearchResults />} /> 
         </Route>
       </Routes>
     </div>

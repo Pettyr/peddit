@@ -2,13 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import postsListReducer from '../features/postsList/postsListSLice';
 import commentsReducer from '../features/comments/commentsSlice';
-import previewReducer from '../features/imagePreview/previewSlice';
+import searchResultsReducer from '../features/search/searchResultsSlice';
 
 const store = configureStore({
     reducer: {
         postsList: postsListReducer,
         comments: commentsReducer,
-        preview: previewReducer,
+        searchResults: searchResultsReducer
     },
 });
 

@@ -9,22 +9,26 @@
   justify-content: center;
   align-items: center;
 }
+.comments-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .post-title {
   align-self: center;
   margin: 5rem auto;
   max-width: 60rem;
 }
-.post-preview img {
-  height: 50%;
-  width: 50%;
+.post-preview-comments {
+  max-width: 50%;
+  height: auto;
 }
 
-.comments-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.post-preview-comments img {
+  height: 100%;
+  width: 100%;
 }
 
 .comment-card {
