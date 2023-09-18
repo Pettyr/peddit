@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // Create an async thunk for fetching posts
 export const fetchPostsList = createAsyncThunk(
   'postsList/fetchPostsList', 
-  async () => {
+  async (category) => {
     try {
-      const response = await fetch('https://www.reddit.com/r/popular.json');
+      const response = await fetch(`https://www.reddit.com/r/${category}.json`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
