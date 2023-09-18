@@ -11,6 +11,7 @@ import {
 import { useParams } from 'react-router-dom';
 import Comment from '../../components/Comment'
 import './comments.css'
+import SkeletonLoader from '../../utilities/skeletonLoaderComments';
 import ImagePreview from '../../components/ImagePreview';
 
 const Comments = () => {
@@ -36,7 +37,11 @@ const Comments = () => {
   };
   
   if (isFetchingCommentsList) {
-    return <div className='comment-container'>Fetching comments</div>;
+    return <>
+    <SkeletonLoader count={1} />
+    <h2 className="comments-page-heading">Comments</h2>
+    <SkeletonLoader count={5} />
+    </>
   }
 
   const visibleComments = showMoreComments ? comments : comments?.slice(0, numCommentsToShow);

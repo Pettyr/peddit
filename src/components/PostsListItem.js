@@ -2,6 +2,7 @@ import React from 'react';
 import ROUTES from '../app/routes';
 import { Link } from 'react-router-dom'
 import ImagePreview from './ImagePreview';
+import { FaRegCommentAlt } from 'react-icons/fa';
 
 export default function PostsListItem({ post }) {
 const { title,
@@ -23,18 +24,20 @@ const handlePostClick = () => {
 
   return (
     <section className="card">
-      <div className="post-header"> 
-        <Link to={ROUTES.commentsRoute(subreddit, id)} onClick={handlePostClick}>
+      <Link to={ROUTES.commentsRoute(subreddit, id)} onClick={handlePostClick} className='custom-link'>
+        <p className="post-subreddit">r/{subreddit}</p>
+        <p className='post-author'>{author}</p>     
         <h3 className='post-title'>{title}</h3>
-        </Link>
-        <div className='post-preview'>
+      <div className="post-header">
+        <div className='post-preview'>       
           <ImagePreview preview={preview} />
         </div> 
       </div>
-        <div className='post-content'>
-        <p className='post-author'>Posted by: {author}</p>
-        <p className='post-comments'>Comments: {num_comments}</p>
-        </div>
+          <p className='post-comments'>
+          <FaRegCommentAlt className="icon" /> 
+          {num_comments}
+          </p>
+        </Link>
     </section>
   );
 }

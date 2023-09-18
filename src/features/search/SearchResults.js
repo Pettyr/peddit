@@ -7,6 +7,7 @@ import {
 } from './searchResultsSlice'
 import { useSearchParams, createSearchParams } from 'react-router-dom';
 import PostsListItem from '../../components/PostsListItem';
+import SkeletonLoader from '../../utilities/skeletonLoaderPostsList';
 
 const SearchResults = () => {
     const dispatch = useDispatch();
@@ -23,13 +24,16 @@ const SearchResults = () => {
     }, [dispatch]);
   
     if (isFetching) {
-      return <div className='post-container'>Fetching posts</div>;
+      return <div className='post-container'>
+        <h2>Results for : "{query}"</h2>
+        <SkeletonLoader count={posts.length} />
+      </div>;
     }
   
     return (
       <section>
         <div className="post-container">
-          <h2>Peddit Posts</h2>
+          <h2>Results for : "{query}"</h2>
           {posts.map((post) => (
               <div key={post.data.id}>
                 <PostsListItem post={post} />

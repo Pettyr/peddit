@@ -6,6 +6,7 @@ import {
   isFetching,
 } from './postsListSLice';
 import './postsListAPI.css'
+import SkeletonLoader from '../../utilities/skeletonLoaderPostsList';
 import PostsListItem from '../../components/PostsListItem';
 
 const PostsList = () => {
@@ -20,13 +21,29 @@ const PostsList = () => {
   }, [dispatch, selectedCategory]);
 
   if (isFetchingPostsList) {
-    return <div className='post-container'>Fetching posts</div>;
-  }
+    return <div className="post-container">
+        <h2>Posts</h2>
+        <div>
+        <label htmlFor="category">Select Category: </label>
+        <select
+          id="category"
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="best">Best</option>
+          <option value="popular">Popular</option>
+          <option value="rising">Rising</option>
+          <option value="controversial">Controversial</option>
+        </select>
+      </div> 
+      <SkeletonLoader count={posts.length} />;
+      </div>
+  };
 
   return (
     <section>
       <div className="post-container">
-        <h2>Peddit Posts</h2>
+        <h2>Posts</h2>
         <div>
         <label htmlFor="category">Select Category: </label>
         <select

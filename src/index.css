@@ -21,13 +21,16 @@ li {
   gap: 10rem;
   position: fixed;
   top: 0;
-  background-color: rgba(243, 113, 174, 0.699);
+  background-color: rgba(243, 113, 174, 0.979);
   width: 100%;
   padding: 1rem 0;
 }
 .logo {
   font-size: 2rem;
   margin-left: 5%;
+}
+.search-form {
+  display: flex;  
 }
 
 
@@ -82,10 +85,12 @@ h3 {
   margin-top: 5rem;
 }
 
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 15%;
-  margin-left: 5%;
-  max-width: 8rem;
+.custom-link {
+  text-decoration: none; /* Remove the underline */
+  color: inherit; /* Inherit the text color from the parent */
+}
+
+.custom-link:hover {
+  text-decoration: none; /* Remove the underline on hover */
+  color: inherit; /* Inherit the text color on hover */
 }

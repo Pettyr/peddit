@@ -3,6 +3,7 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchSearchResults } from '../features/search/searchResultsSlice'
 import ROUTES from '../app/routes';
+import { CiSearch } from 'react-icons/ci';
 
 const SearchBar = () => {
     const searchInputRef = useRef();
@@ -24,7 +25,7 @@ const SearchBar = () => {
     return (
     <form onSubmit={onSearchHandler} className="search-form"> 
             <input type="text" placeholder="Search Peddit" ref={searchInputRef} />
-            <button type="submit"> 🔎 </button>
+            <button type="submit"><CiSearch /></button>
     </form>
     )
 }
