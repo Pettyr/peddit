@@ -1,7 +1,7 @@
 /* PostContainer styles */
 .post-container {
     max-width: 800px;
-    margin: 10% auto;
+    margin: 7% auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -82,7 +82,7 @@
   
   @media (max-width: 450px) {
     .post-container {
-      margin: 5% auto; /* Reduce top margin on mobile */
+      margin: 3% auto; /* Reduce top margin on mobile */
     }
   
     .card {

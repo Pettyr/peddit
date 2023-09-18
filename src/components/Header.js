@@ -5,13 +5,15 @@ import SearchBar from "./SearchBar";
 import { AiOutlineReddit } from 'react-icons/ai';
 function Header() {
     return (
-      <header className="header">
+      <header className="header-container">
+        <div className="header"> 
         <div className="logo">
           <NavLink to={ROUTES.postListRoute()} >
             <AiOutlineReddit /> Peddit
             </NavLink>
         </div>
           <SearchBar className="searchBar" />
+        </div>
       </header>
     );
   }

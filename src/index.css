@@ -14,9 +14,12 @@ li {
 }
 
 /* Set a default font family and size */
+.header-container {
+  display: flex;
+}
 .header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-around;
   gap: 10rem;
   position: fixed;
@@ -74,15 +77,25 @@ h3 {
 }
 
 /* Media queries for responsive design */
-@media (max-width: 768px) {
+@media (max-width: 450px) {
   /* Add styles for smaller screens */
+  .header {
+    gap: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+  }
+  .logo {
+    margin-left: 0;
+    font-size: 1rem;
+  }
 }
 
 .main-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 10%;
 }
 
 .custom-link {
