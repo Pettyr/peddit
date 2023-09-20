@@ -1,6 +1,6 @@
 /* Define a class for comment cards */
 .comments-container {
-  max-width: 800px;
+  max-width: 90%;
   margin: 1rem auto;
   padding: 20px;
   display: flex;
@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .comments-header {
   display: flex;
   flex-direction: column;
@@ -20,9 +21,10 @@
   align-self: center;
   margin: 5rem auto;
   max-width: 60rem;
+  justify-self: center;
 }
 .post-preview-comments {
-  max-width: 50%;
+  max-width: 80%;
   height: auto;
 }
 
@@ -31,16 +33,38 @@
   width: 100%;
 }
 
+.comments-page-heading {
+  margin-top: 5rem;
+}
+
+.load-more-comments {
+  background-color:  rgba(243, 113, 174, 0.979); /* Blue color for the button*/
+  color: #fff; /* White text color */
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.comments-list {
+  max-width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
 .comment-card {
     border: 1px solid #ccc;
     border-radius: 8px;
-    padding: 16px;
-    margin: 8px 0;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     gap: 3rem;
-    width: 40rem;
+    width: 100%;
   }
+
   .comment-card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
@@ -55,22 +79,26 @@
   }
   /* Style comment upvotes */
   .comment-upvotes {
-    font-weight: bold;
-    color: #007bff; /* Blue color for upvotes */
-    margin: 1rem 0 0 2rem;
+    color:  rgba(243, 113, 174, 0.979); 
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;/* Blue color for upvotes */
   }
   
   /* Style the "Replies" button */
-  .comment-replies {
-    background-color: #007bff; /* Blue color for the button */
+  .comment-replies-button {
+    background-color:  rgba(243, 113, 174, 0.979); /* Blue color for the button*/
     color: #fff; /* White text color */
-    padding: 8px 16px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 8px;
     display: flex;
     align-self: center;
+  }
+  #reply-button {
+    margin: 0;
   }
   .comment-replies:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -78,6 +106,48 @@
     background-color: #0056b3;
   }
   
-.comments-page-heading {
-  margin-left: auto;
+
+.reply {
+  margin-left: 3%;
+}
+.comment-reply-card {
+  padding: 0.2rem;
+  margin: 8px 0;
+  background-color: #fff;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.comment-card:hover {
+  background-color: #beb9b96e;
+}
+.more-replies-button {
+    background-color:  rgba(243, 113, 174, 0.979); /* Blue color for the button*/
+    color: #fff; /* White text color */
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 2rem;
+    display: flex;
+    align-self: center;
+    margin-left: 16px;
+}
+
+@media (max-width: 450px) {
+  .comments-container {
+    margin: 3% auto; /* Reduce top margin on mobile */
+  }
+
+  .comments-card {
+    width: 90%;
+    margin: 1rem 0;/* Full width on mobile */
+  }
+  .comment {
+    font-size: 0.8rem;
+  }
+  .comment-replies-button {
+    font-size: 0.5rem;
+  }
 }

@@ -48,33 +48,33 @@ const Comments = () => {
 
 
   return (
-    <>
-    <div className="comments-header">
-      <h2 className="post-title">{title}</h2>
-      <div className="post-preview-comments">
-      <p>{selfText? selfText : null}</p>
-      <ImagePreview preview={parsedPreview} />
+    <section className="comments-container">
+      <div className="comments-header">
+        <h2 className="post-title">{title}</h2>
+        <div className="post-preview-comments">
+        <p>{selfText? selfText : null}</p>
+        <ImagePreview preview={parsedPreview} />
+        </div>
+        <hr /> 
       </div>
-      <hr /> 
-    </div>
       <h2 className="comments-page-heading">Comments</h2>
-      <div className="comments-container">
-        {visibleComments?.map((comment) => (
-          comment.kind === 'more' ? (
-            <button className="load-more-comments" onClick={toggleMoreComments} key={comment.data.id}>
-              {showMoreComments ? 'Hide More Comments' : 'Load More Comments'}
+      <div className="comments-list">
+          {visibleComments?.map((comment) => (
+            comment.kind === 'more' ? (
+              <button className="load-more-comments" onClick={toggleMoreComments} key={comment.data.id}>
+                {showMoreComments ? 'Hide More Comments' : 'Load More Comments'}
+              </button>
+            ) : (
+              <Comment comment={comment} key={comment.data.id} />
+            )
+          ))}
+          {!showMoreComments && (
+            <button className="load-more-comments" onClick={toggleMoreComments}>
+              Load More Comments
             </button>
-          ) : (
-            <Comment comment={comment} key={comment.data.id} />
-          )
-        ))}
-        {!showMoreComments && (
-          <button className="load-more-comments" onClick={toggleMoreComments}>
-            Load More Comments
-          </button>
-        )}
+          )}
       </div>
-    </>
+    </section>
   );
 };
 

@@ -5,7 +5,7 @@ import {
   selectPostsList,
   isFetching,
 } from './postsListSLice';
-import './postsListAPI.css'
+import './postsList.css'
 import SkeletonLoader from '../../utilities/skeletonLoaderPostsList';
 import PostsListItem from '../../components/PostsListItem';
 
@@ -24,7 +24,7 @@ const PostsList = () => {
     return <div className="post-container">
         <h2>Posts</h2>
         <div>
-        <label htmlFor="category">Select Category: </label>
+        <label htmlFor="category">Category: </label>
         <select
           id="category"
           value={selectedCategory}
@@ -45,7 +45,7 @@ const PostsList = () => {
       <div className="post-container">
         <h2>Posts</h2>
         <div>
-        <label htmlFor="category">Select Category: </label>
+        <label htmlFor="category">Category: </label>
         <select
           id="category"
           value={selectedCategory}

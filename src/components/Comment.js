@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Replies from "./Replies"
 import extractMoreCommentIds from '../features/loadMoreReplies/extractMoreCommentIds';
 import ReactMarkdown from 'react-markdown';
+import { BiUpvote } from 'react-icons/bi';
 
 const Comment = ({ comment }) => {
   // Render the comment content here
@@ -108,17 +109,18 @@ const Comment = ({ comment }) => {
       
 
   return (
-    <section className='comment'>
-    <div className="comment-card" >
+    <section className="comment-card">
     <ReactMarkdown className="comment">{body}</ReactMarkdown>
-    <p className="comment-upvotes">{ups} upvotes</p>
-    </div>
-    { renderReplyCount > 0 && (
-    <button className='comment-replies' onClick={toggleReplies}> 
-    {showReplies? 'HideReplies': `Show ${renderReplyCount} Replies`}
-    </button>
-    )}
-    {showReplies && renderReplies()}
+    <div className="comment-upvotes"> 
+      <p><BiUpvote /> {ups} </p>
+      <p>{renderReplyCount > 0 && (
+        <button className='comment-replies-button' onClick={toggleReplies}>
+          {showReplies ? 'Hide Replies' : `${renderReplyCount} Replies`}
+        </button>
+      )}
+      {showReplies && renderReplies()}
+      </p>
+      </div>
     </section>
   );
 };

@@ -15,7 +15,8 @@ function App() {
     <BrowserRouter>
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<AppLayout />}>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<PostList />} />
           <Route path="/posts-list" element={<PostList />} />
           <Route path="/r/:subreddit/comments/:postId" element={<Comments />} />
           <Route path="/search" element={<SearchResults />} /> 

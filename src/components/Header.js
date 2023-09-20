@@ -3,6 +3,7 @@ import ROUTES from "../app/routes";
 import { NavLink } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { AiOutlineReddit } from 'react-icons/ai';
+
 function Header() {
     return (
       <header className="header-container">
