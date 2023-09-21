@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/peddit/static/css/main.fcd87ad2.css",
-    "main.js": "/peddit/static/js/main.64f8667e.js",
+    "main.js": "/peddit/static/js/main.a7c82316.js",
     "static/js/787.858cd718.chunk.js": "/peddit/static/js/787.858cd718.chunk.js",
     "index.html": "/peddit/index.html",
     "main.fcd87ad2.css.map": "/peddit/static/css/main.fcd87ad2.css.map",
-    "main.64f8667e.js.map": "/peddit/static/js/main.64f8667e.js.map",
+    "main.a7c82316.js.map": "/peddit/static/js/main.a7c82316.js.map",
     "787.858cd718.chunk.js.map": "/peddit/static/js/787.858cd718.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fcd87ad2.css",
-    "static/js/main.64f8667e.js"
+    "static/js/main.a7c82316.js"
   ]
 }
