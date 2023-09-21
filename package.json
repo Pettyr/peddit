@@ -1,7 +1,7 @@
 {
   "name": "peddit",
   "version": "0.1.0",
-  "homepage": "https://pettyr.github.io/peddit/",
+  "homepage": "https://pettyr.github.io/peddit",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
