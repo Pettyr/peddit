@@ -11,8 +11,9 @@ import Comments from "../features/comments/Comments";
 import SearchResults from "../features/search/SearchResults";
 
 function App() {
+  const basename = "https://pettyr.github.io/peddit/"
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
     <div className="App">
       <Routes>
         <Route path="/" element={<AppLayout />}>
