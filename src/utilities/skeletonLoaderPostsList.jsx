@@ -2,12 +2,12 @@
 import React from 'react';
 import './skeletonLoaderPostsList.css'; // Import your CSS for styling
 
-const SkeletonLoader = ({ count }) => {
+const SkeletonLoaderPostsList = ({ count }) => {
   const skeletonItems = [];
 
   for (let i = 0; i < count; i++) {
     skeletonItems.push(
-      <div class="col-sm-6 col-md-3">
+      <div class="post-container">
           <div class="movie--isloading">
             <div class="loading-image"></div>
             <div class="loading-content">
@@ -25,4 +25,4 @@ const SkeletonLoader = ({ count }) => {
   return <div className="container">{skeletonItems}</div>;
 };
 
-export default SkeletonLoader;
+export default SkeletonLoaderPostsList;

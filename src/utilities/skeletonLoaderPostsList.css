@@ -1,14 +1,14 @@
 
-  .container {
-    max-width: 800px;
-    max-height: fit-content;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    justify-content: center;
-    align-items: center;
-  }
+.post-container {
+  max-width: 800px;
+  margin: 7% auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
   
   .movie--isloading {
     border: 1px solid #ccc;
@@ -125,4 +125,15 @@
     40%, 100% {
       background-position: 140px;
     }
+  }
+
+  @media (max-width: 450px) {
+    .post-container {
+      margin: 3% auto;
+    }
+    .movie--isloading {
+      width: 90%;
+      margin: 1rem 0;
+    }
+
   }

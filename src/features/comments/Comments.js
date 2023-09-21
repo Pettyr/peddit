@@ -37,11 +37,11 @@ const Comments = () => {
   };
   
   if (isFetchingCommentsList) {
-    return <>
+    return <div className='comments-container'>
     <SkeletonLoader count={1} />
     <h2 className="comments-page-heading">Comments</h2>
-    <SkeletonLoader count={5} />
-    </>
+    <SkeletonLoader count={5} /> 
+    </div>
   }
 
   const visibleComments = showMoreComments ? comments : comments?.slice(0, numCommentsToShow);
@@ -52,7 +52,7 @@ const Comments = () => {
       <div className="comments-header">
         <h2 className="post-title">{title}</h2>
         <div className="post-preview-comments">
-        <p>{selfText? selfText : null}</p>
+        <p className='comment'>{selfText? selfText : null}</p>
         <ImagePreview preview={parsedPreview} />
         </div>
         <hr /> 

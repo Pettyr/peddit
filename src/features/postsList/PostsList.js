@@ -6,7 +6,7 @@ import {
   isFetching,
 } from './postsListSLice';
 import './postsList.css'
-import SkeletonLoader from '../../utilities/skeletonLoaderPostsList';
+import SkeletonLoaderPostsList from '../../utilities/skeletonLoaderPostsList';
 import PostsListItem from '../../components/PostsListItem';
 
 const PostsList = () => {
@@ -36,7 +36,7 @@ const PostsList = () => {
           <option value="controversial">Controversial</option>
         </select>
       </div> 
-      <SkeletonLoader count={posts.length} />;
+      <SkeletonLoaderPostsList count={posts.length} />;
       </div>
   };
 

@@ -7,7 +7,7 @@ const SkeletonLoader = ({ count }) => {
 
   for (let i = 0; i < count; i++) {
     skeletonItems.push(
-      <div class="col-sm-6 col-md-3">
+      <div class="comments-list">
           <div class="movie--isloading">
             <div class="loading-image"></div>
             <div class="loading-content">
