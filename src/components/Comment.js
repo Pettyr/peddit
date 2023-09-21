@@ -106,7 +106,12 @@ const Comment = ({ comment }) => {
       </div>
     );
   };
-      
+  const replyOrReplies = (renderReplyCount) => {
+    if (renderReplyCount < 2) {
+      return "Reply"
+    } else if (renderReplyCount >= 2) {
+  } return "Replies"
+  }
 
   return (
     <section className="comment-card">
@@ -115,7 +120,7 @@ const Comment = ({ comment }) => {
       <p><BiUpvote /> {ups} </p>
       <p>{renderReplyCount > 0 && (
         <button className='comment-replies-button' onClick={toggleReplies}>
-          {showReplies ? 'Hide Replies' : `${renderReplyCount} Replies`}
+          {showReplies ? 'Hide Replies' : `${renderReplyCount} ${replyOrReplies(renderReplyCount)}`}
         </button>
       )}
       {showReplies && renderReplies()}
